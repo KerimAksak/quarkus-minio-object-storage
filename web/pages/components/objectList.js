@@ -15,7 +15,7 @@ export default function ObjectList() {
   return (
     <div className={styles.container}>
       {objects.map((object, index) => (
-        <div className={styles.objectCard}>
+        <div key={object} className={styles.objectCard}>
           <span
             style={{
               margin: "0px 5px",
@@ -26,7 +26,7 @@ export default function ObjectList() {
             <BsFillImageFill />
           </span>
 
-          <p key={object} className={styles.objetName}>
+          <p className={styles.objetName}>
             <a href={`http://localhost:8080/minio/${object}`} target="_blank">
               {object}
             </a>
