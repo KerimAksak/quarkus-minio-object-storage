@@ -28,7 +28,8 @@ public class MinioFileService implements FileService{
             var object = PutObjectArgs.builder()
                     .object(id)
                     .contentType(contentType)
-                    .stream(isFile, isFile.available(), -1)
+                    // Upload unknown sized input stream.
+                    .stream(isFile, -1, 10485760)
                     .bucket(s3ConfigProperties.bucket())
                     .build();
             minioClient.putObject(object);
