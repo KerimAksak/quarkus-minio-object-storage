@@ -10,7 +10,7 @@ import io.netty.util.internal.ResourcesUtil;
 @ApplicationScoped
 public class MinioService {
     public byte[] getImage(String id) throws Exception{
-        File file = ResourcesUtil.getFile(MinioService.class, "den.png");
+        File file = ResourcesUtil.getFile(MinioService.class, "den.jpeg");
         return Files.readAllBytes(file.toPath());
     }
 }

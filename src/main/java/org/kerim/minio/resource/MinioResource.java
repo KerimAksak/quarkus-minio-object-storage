@@ -11,8 +11,6 @@ import javax.ws.rs.core.Response;
 import org.jboss.resteasy.core.ServerResponse;
 import org.kerim.minio.service.MinioService;
 
-
-
 @Path("/minio/")
 public class MinioResource {
 
@@ -23,7 +21,7 @@ public class MinioResource {
     @Path("{id}")
     @Produces("image/jpeg")
     public Response getImage(@PathParam("id") String id) throws Exception{
+        
         return Response.status(200).entity(minioService.getImage(id)).build();
     }
-
 }
