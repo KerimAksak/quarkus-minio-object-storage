@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgb(0 20 80 / 10%);
+  border: 1px solid rgba(0, 0, 80, 0.08);
+  background: #fff;
+  padding: 10px 20px;
+}
+
+.objectCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.objetName a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.objetName a:hover,
+.objetName a:focus,
+.objetName a:active {
+  text-decoration: underline;
+}
