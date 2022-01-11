@@ -21,4 +21,10 @@ public class MinioResource {
     public Response getImage(@PathParam("id") String id){
         return Response.status(200).entity(minioService.getImage(id)).build();
     }
+
+    @GET
+    @Path("/getAll")
+    public Response getAllBuckets(){
+        return Response.status(200).entity(minioService.getAllBuckets()).build();
+    }
 }

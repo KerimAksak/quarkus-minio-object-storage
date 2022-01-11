@@ -1,17 +1,20 @@
 package org.kerim.minio.service.s3;
 
-import io.minio.GetObjectArgs;
-import io.minio.MinioClient;
-import io.minio.PutObjectArgs;
-import io.minio.RemoveObjectArgs;
+import io.minio.*;
+import io.minio.messages.Item;
+import org.jboss.logging.Logger;
 import org.kerim.minio.config.S3ConfigProperties;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 @ApplicationScoped
 public class MinioFileService implements FileService{
+
+    private static final Logger LOGGER = Logger.getLogger("ListenerBean");
 
     @Inject
     MinioClient minioClient;
@@ -58,4 +61,20 @@ public class MinioFileService implements FileService{
         }
         return new byte[0];
     }
+
+    @Override
+    public List<?> getAllBuckets(){
+        Iterable<Result<Item>> results = minioClient.listObjects(
+                ListObjectsArgs.builder().bucket(s3ConfigProperties.bucket()).build());
+        List<String> resultToList = new ArrayList<>();
+        results.forEach(value -> {
+            try {
+                resultToList.add(value.get().objectName());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        return resultToList;
+    }
+
 }

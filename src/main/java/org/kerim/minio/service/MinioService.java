@@ -1,6 +1,7 @@
 package org.kerim.minio.service;
 
 import java.io.InputStream;
+import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -23,5 +24,9 @@ public class MinioService {
 
     public void deleteImage(String id){
         fileService.deleteFile(id);
+    }
+
+    public List<?> getAllBuckets(){
+        return fileService.getAllBuckets();
     }
 }
