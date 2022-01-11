@@ -1,16 +1,27 @@
 package org.kerim.minio.service;
 
-import java.io.File;
-import java.nio.file.Files;
+import java.io.InputStream;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
-import io.netty.util.internal.ResourcesUtil;
+import org.kerim.minio.service.s3.MinioFileService;
 
 @ApplicationScoped
 public class MinioService {
-    public byte[] getImage(String id) throws Exception{
-        File file = ResourcesUtil.getFile(MinioService.class, "den.jpeg");
-        return Files.readAllBytes(file.toPath());
+
+    @Inject
+    MinioFileService fileService;
+
+    public byte[] getImage(String id){
+        return fileService.getFile(id);
+    }
+
+    public void saveImage(String id, InputStream isFile){
+        fileService.saveFile(id, isFile,"image/jpeg");
+    }
+
+    public void deleteImage(String id){
+        fileService.deleteFile(id);
     }
 }

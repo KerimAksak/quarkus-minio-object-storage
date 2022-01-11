@@ -5,13 +5,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.jboss.resteasy.core.ServerResponse;
 import org.kerim.minio.service.MinioService;
 
-@Path("/minio/")
+@Path("/minio")
 public class MinioResource {
 
     @Inject
@@ -20,8 +18,7 @@ public class MinioResource {
     @GET
     @Path("{id}")
     @Produces("image/jpeg")
-    public Response getImage(@PathParam("id") String id) throws Exception{
-        
+    public Response getImage(@PathParam("id") String id){
         return Response.status(200).entity(minioService.getImage(id)).build();
     }
 }
