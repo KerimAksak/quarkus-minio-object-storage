@@ -23,6 +23,7 @@ export default function ObjectList() {
               alignItems: "center",
             }}
           >
+            {index + 1} |
             <BsFillImageFill />
           </span>
 

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 import ObjectList from "./components/objectList";
@@ -19,7 +18,9 @@ export default function Home() {
           Welcome to <a>MinIO Storage</a>
         </h1>
         <UploadFile />
-        <p className={styles.description}>All stored images</p>
+        <p className={styles.description}>
+          <b>All stored images</b>
+        </p>
         <ObjectList />
       </main>
 
