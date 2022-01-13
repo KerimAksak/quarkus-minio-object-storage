@@ -1,10 +1,8 @@
 package org.kerim.minio.resource;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.kerim.minio.service.MinioService;
@@ -26,5 +24,12 @@ public class MinioResource {
     @Path("/getAll")
     public Response getAllBuckets(){
         return Response.status(200).entity(minioService.getAllBuckets()).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Response deleteImage(@PathParam("id") String id){
+        minioService.deleteImage(id);
+        return Response.ok().build();
     }
 }
