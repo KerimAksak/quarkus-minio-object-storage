@@ -6,11 +6,16 @@ In our Quarkus project, we were connected to the server with MinIO [SDKs](https:
 
 Backend and frontend were created using [Quarkus](https://quarkus.io/) and React in the project.
 
-## Installation
-
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ## Running the application in dev mode
+
+### MinIO Server
+
+```shell script
+cd src/main/resources/docker
+docker-compose -f minio-compose.yml up -d
+```
 
 ### Backend
 
@@ -20,7 +25,7 @@ You can run your application in dev mode that enables live coding using:
 ./mvnw quarkus:dev
 ```
 
-> **_NOTE:_** Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+> **_NOTE:_** Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/
 
 ### Frontend
 
@@ -38,4 +43,6 @@ and open to [http://localhost:3000](http://localhost:3000)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
-To track uploaded files via MinIO, go to http://localhost:9000.
+To track uploaded files via MinIO, go to http://localhost:9000
+
+> **_NOTE:_** MinIO server credentials are in minio-compose.yml. (MINIO_ROOT_USER - MINIO_ROOT_PASSWORD)
